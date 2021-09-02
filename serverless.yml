@@ -1,0 +1,56 @@
+
+service: lambda-nodejs
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: ap-south-1
+  profile: testuser
+
+# Remember to reference the plugin
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http: 
+          path: hello/{id}
+          method: get
+          request:
+            parameters:
+              querystrings:
+                param1: true
+                param2: true
+                param3: false
+              paths:
+                id: true
+      - http: 
+          path : hello/{id}
+          method: post
+          request:
+            parameters:
+              querystrings:
+                testQuery: true
+              paths:
+                id: true              
+            schemas: # Optional request schema validation, mapped by content type
+              application/json:
+                name: ModelName  # Optional: Name of the API Gateway model
+                description: "Body of the POST method Similar to PUT and all" # Optional: Description of the API Gateway model
+                schema: ${file(create_request.json)}
+      - http: 
+          path : hello/{id}
+          method: put
+          request:
+            parameters:
+              headers:
+                content-type: true
+              querystrings:
+                testQuery: true
+              paths:
+                id: true              
+            schemas: # Optional request schema validation, mapped by content type
+              application/json:
+                name: ModelNamePUT  # Optional: Name of the API Gateway model
+                description: "Body of the POST method Similar to PUT and all" # Optional: Description of the API Gateway model
+                schema: ${file(create_request_PUT.json)}            

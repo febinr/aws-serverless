@@ -1,0 +1,28 @@
+{
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "title": "Post Body",
+    "required": ["username"],
+    "properties": {
+      "username": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Test name"
+          }
+        } 
+      },
+      "mobnum": {
+        "type": "number",
+        "title": "Test Number",
+        "default": ""
+      },
+      "isvalid": {
+        "type": "boolean",
+        "title": "Test boolean",
+        "default": true
+      }
+    }
+  }

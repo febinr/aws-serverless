@@ -1,0 +1,25 @@
+{
+    "type": "object",
+    "title": "PUT Body",
+    "required": ["param1", "param2"],
+    "properties": {
+      "param1": {
+        "type": "number",
+        "title": "Test Number",
+        "default": ""
+      },
+      "param2": {
+        "type": "boolean",
+        "title": "Test boolean",
+        "default": true
+      },
+      "param3": {
+        
+          "type": "array",
+          "items": {
+              "type": "string",
+              "enum": ["one", "two", "three"]
+          }
+      }
+    }
+  }
